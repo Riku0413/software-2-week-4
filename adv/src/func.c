@@ -39,7 +39,7 @@ void normalize(const int N, const int dim, const double x[N][dim - 1], double no
 
 }
 
-// 平均二乗誤差 MSE
+// 平均平方二乗誤差 RMSE
 double f_value(const int N, const int dim, const double a[], const double norm_x[N][dim - 1], const double y[])
 {
     double E = 0;
@@ -54,7 +54,7 @@ double f_value(const int N, const int dim, const double a[], const double norm_x
       E += (y[i] - y_pred) * (y[i] - y_pred);
     }
 
-    return E / N;
+    return sqrt(E / N);
 }
 
 // 勾配ベクトルの計算
@@ -107,10 +107,7 @@ int optimize(const double alpha, const int N, const int dim, double a[], const d
 	const double norm = calc_norm(dim, g);
   const double E = f_value(N, dim, a, norm_x, y);
   if (norm < 0.01 | iter % 10 == 0) {
-    printf("%3d norm = %7.4f, MSE = %7.4f", iter, norm, E);
-    // for (int i = 0; i < dim; i++) {
-    //     printf(", a[%d] = %7.4f", i, a[i]);
-    // }
+    printf("%3d norm = %7.4f, RMSE = %7.4f", iter, norm, E);
     printf("\n");
   }
 

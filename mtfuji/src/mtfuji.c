@@ -45,6 +45,35 @@ int main(const int argc, const char **argv)
     
     double y_pred = a[0] * 3.776 + a[1];
     printf("y_pred = %lf\n", y_pred);
+
+    // ソート
+    Sample data_sorted[14];
+    int rank[14]; // 0位, 1位, 2位 ...
+    rank[0] = 0; // 0位に　data 0 を代入
+
+    for (int i = 1; i < 14; i++) {
+      for (int j = 0; j < i; j++) {
+        if (data[i].alt > data[rank[j]].alt) {
+          for (int k = 13; k > j; k--) {
+            rank[k] = rank[k-1];
+          }
+          rank[j] = i;
+          break;
+        }
+        if (j == i - 1) {
+          rank[j + 1] = i;
+        }
+      }
+    }
+
+    for (int i = 0; i < 14; i++) {
+      data_sorted[i] = data[rank[i]];
+    }
+
+    // ソートの確認
+    for (int i = 0; i < 14; i++) {
+      printf("%s, %lf, %lf\n", data_sorted[i].loc, data_sorted[i].alt, data_sorted[i].temp);
+    }
     
     return 0;
 }
