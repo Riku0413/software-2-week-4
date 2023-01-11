@@ -106,6 +106,7 @@ for (int i = 0; i < 14; i++) {
 }
 
 // ソートの確認
+printf("\n- ソートの結果 -\n");
 for (int i = 0; i < 14; i++) {
   printf("%s, %lf, %lf\n", data_sorted[i].loc, data_sorted[i].alt, data_sorted[i].temp);
 }

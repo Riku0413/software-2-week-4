@@ -69,10 +69,12 @@ int main(const int argc, const char **argv)
     int test_n = 500 - train_n;
 
     // 学習
+    printf("\n- 学習 -\n");
     const int iter = optimize(alpha, train_n, dim, a, train_norm_x, train_y, f_gradient);
     printf("number of iterations = %d\n", iter);
 
     // 最終的なパラメータの表示
+    printf("\n- 学習後のパラメータ -\n");
     for (int k = 0; k < dim; k++) {
       printf("a[%d] = %7.4f", k, a[k]);
       if (k < dim - 1) {
@@ -83,11 +85,13 @@ int main(const int argc, const char **argv)
 
     // テスト
     double E_test = f_value(test_n, dim, a, test_norm_x, test_y);
+    printf("\n- テスト -\n");
     printf("RMSE of test data = %7.4f\n", E_test);
 
+    printf("\n- テストデータを用いた予測 -\n");
     for (int i = 0; i < 5; i++) {
       double y_pred = predict(dim, a, x[i], sta);
-      printf("y_pred = %lf, y = %lf\n", y_pred, y[i]);
+      printf("y_pred[%d] = %lf, y[%d] = %lf\n", i, y_pred, i, y[i]);
     }
 
     free(a);

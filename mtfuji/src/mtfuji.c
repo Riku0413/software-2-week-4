@@ -37,6 +37,7 @@ int main(const int argc, const char **argv)
     }
     fclose(fp);
 
+    printf("\n- 学習 -\n");
     const int iter = optimize(alpha, dim, a, x, y, 14, f_gradient);
     
     printf("number of iterations = %d\n", iter);
@@ -44,6 +45,7 @@ int main(const int argc, const char **argv)
     free(a);
     
     double y_pred = a[0] * 3.776 + a[1];
+    printf("\n- 山頂の気温予測 -\n");
     printf("y_pred = %lf\n", y_pred);
 
     // ソート
@@ -71,6 +73,7 @@ int main(const int argc, const char **argv)
     }
 
     // ソートの確認
+    printf("\n- ソートの結果 -\n");
     for (int i = 0; i < 14; i++) {
       printf("%s, %lf, %lf\n", data_sorted[i].loc, data_sorted[i].alt, data_sorted[i].temp);
     }
