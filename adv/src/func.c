@@ -32,7 +32,7 @@ void normalize(const int N, const int dim, const double x[N][dim - 1], double no
       norm_x[i][k] = (x[i][k] - ave) /str;
     }
 
-    // 訓練データの統計量を保存
+    // 統計量を保存
     sta[0][k] = ave;
     sta[1][k] = str;
   }

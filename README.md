@@ -4,17 +4,17 @@
 
 ### 実行方法
 
-まず,以下のコードによりディレクトリを移動する.
+まず, 以下のコードによりディレクトリを移動する.
 ```
 cd ./paint
 ```
 
-続いて,以下のmakeコマンドにより,コンパイルする.
+続いて, 以下のmakeコマンドによりコンパイルする.
 ```
 make
 ```
 
-最後に,例えば以下のコードによって実行する.
+最後に, 例えば以下のコードによって実行する.
 ```
 ./bin/paintapp 80 40
 ```
@@ -25,7 +25,7 @@ make
 
 1. 誤差関数や勾配の計算
 
-誤差関数については以下の関数で計算.
+　　誤差関数については以下の関数で計算.
 ```
 double f_value(const double a[], const double x[], double y[], int N)
 {
@@ -37,7 +37,7 @@ double f_value(const double a[], const double x[], double y[], int N)
 }
 ```
 
-それに合わせて,勾配ベクトルは以下の関数で計算.
+　　それに合わせて, 勾配ベクトルは以下の関数で計算.
 ```
 void f_gradient(const double a[], const double x[], const double y[], double g[], int N)
 {
@@ -53,7 +53,7 @@ void f_gradient(const double a[], const double x[], const double y[], double g[]
 
 2. csvファイルの読み込み
 
-以下のコードによって,Sample構造体の配列を作り,csvファイルのデータを読みこむ.
+以下のコードによって, Sample構造体の配列を作り, csvファイルのデータを読みこむ.
 ```
 double x[14] = {};
 double y[14] = {};
@@ -78,8 +78,8 @@ fclose(fp);
 
 3. データを標高の降順にソート
 
-データのソートは,まず第1データをセットし,次に第2データを第1データと大小比較してランキング化する.
-さらに,第３データを既存の2つと比較してランキングを更新する.これを繰り返し,完成した14データのランキングをもとに最後にまとめてソートする, というアルゴリズムで実装している.
+データのソートは, まず第1データをセットし, 次に第2データを第1データと大小比較してランキング化する.
+さらに, 第３データを既存の2つと比較してランキングを更新する. これを繰り返し, 完成した14データのランキングをもとに最後にまとめてソートする, というアルゴリズムで実装している.
 ```
 // ソート
 Sample data_sorted[14];
@@ -113,17 +113,17 @@ for (int i = 0; i < 14; i++) {
 
 ### 実行方法
 
-まず,以下のコードによりディレクトリを移動する.
+まず, 以下のコードによりディレクトリを移動する.
 ```
 cd ./mtfuji
 ```
 
-続いて,以下のmakeコマンドにより,コンパイルする.
+続いて, 以下のmakeコマンドによりコンパイルする.
 ```
 make
 ```
 
-最後に,例えば以下のコードによって実行する.
+最後に, 例えば以下のコードによって実行する.
 ```
 ./bin/mtfuji
 ```
@@ -141,9 +141,9 @@ http://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_californ
 
 ### プログラムのフロー
 
-0. pythonでオープンデータを読み込み,csv化
+0. pythonでオープンデータを読み込み, csv化
 
-　　(このとき使用したpyファイル,作成したcsvファイルは同封済み)
+　　(このとき使用したpyファイル, 作成したcsvファイルは同封済み)
 
 1. csvファイルの読み込み
 2. パラメータの初期化
@@ -156,7 +156,7 @@ http://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_californ
 
 ・データの標準化
 
-効率的に学習を進めるために,以下の関数によって全特徴量を標準化できるようにした.
+効率的に学習を進めるために, 以下の関数によって全特徴量を標準化できるようにした.
 ```
 void normalize(const int N, const int dim, const double x[N][dim - 1], double norm_x[N][dim - 1], double sta[2][dim - 1])
 {
@@ -180,7 +180,7 @@ void normalize(const int N, const int dim, const double x[N][dim - 1], double no
       norm_x[i][k] = (x[i][k] - ave) /str;
     }
 
-    // 訓練データの統計量を保存
+    // 統計量を保存
     sta[0][k] = ave;
     sta[1][k] = str;
   }
@@ -190,8 +190,7 @@ void normalize(const int N, const int dim, const double x[N][dim - 1], double no
 
 ・データの分割
 
-モデルの汎化性能および過学習の傾向を調べるために,以下の関数でデータの分割を可能にした.
-rateは訓練データの割合を表す.
+モデルの汎化性能および過学習の傾向を調べるために, 以下の関数でデータの分割を可能にした. rateは訓練データの割合を表す.
 ```
 void divide(const int N, const int dim, const double rate, const double norm_x[N][dim - 1], double train_norm_x[N][dim - 1], double test_norm_x[N][dim - 1], const double y[], double train_y[], double test_y[])
 {
@@ -216,7 +215,7 @@ void divide(const int N, const int dim, const double rate, const double norm_x[N
 
 ・テストデータによる性能評価
 
-以下の関数により,平均平方二乗誤差(RMSE)を計算できるようにし,モデルの汎化性能および過学習の傾向を調べられるようにした.
+以下の関数により, 平均平方二乗誤差(RMSE)を計算できるようにし, モデルの汎化性能および過学習の傾向を調べられるようにした.
 ```
 double f_value(const int N, const int dim, const double a[], const double norm_x[N][dim - 1], const double y[])
 {
@@ -238,17 +237,17 @@ double f_value(const int N, const int dim, const double a[], const double norm_x
 
 ### 実行方法
 
-まず,以下のコードによりディレクトリを移動する.
+まず, 以下のコードによりディレクトリを移動する.
 ```
 cd ./adv
 ```
 
-続いて,以下のmakeコマンドにより,コンパイルする.
+続いて, 以下のmakeコマンドによりコンパイルする.
 ```
 make
 ```
 
-最後に,例えば以下のコードによって実行する.
+最後に, 例えば以下のコードによって実行する.
 ```
 ./bin/adv_regression
 ```
