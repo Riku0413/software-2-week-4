@@ -25,7 +25,7 @@ make
 
 1. 誤差関数や勾配の計算
 
-　　誤差関数については以下の関数で計算.
+誤差関数については以下の関数で計算.
 ```
 double f_value(const double a[], const double x[], double y[], int N)
 {
@@ -37,7 +37,7 @@ double f_value(const double a[], const double x[], double y[], int N)
 }
 ```
 
-　　それに合わせて, 勾配ベクトルは以下の関数で計算.
+それに合わせて, 勾配ベクトルは以下の関数で計算.
 ```
 void f_gradient(const double a[], const double x[], const double y[], double g[], int N)
 {
